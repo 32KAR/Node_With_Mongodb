@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>View Profile</title>
+</head>
+<style>
+    body {
+        background: whitesmoke
+    }
+
+    label {
+        color: black;
+    }
+
+    img {
+        border-radius: 100px;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(99, 39, 120);
+        box-shadow: none;
+        border: none
+    }
+
+    .profile-button:hover {
+        background: #682773
+    }
+
+    .profile-button:focus {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .profile-button:active {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .back:hover {
+        color: #682773;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+
+    .add-experience:hover {
+        background: #BA68C8;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <br>
+                <form action="/showProfile" method="get" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <img src="/<%= values.img %>" style="height: 8rem" alt="User Image">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="p-3 py-5 ">
+                                <div class="text-center">
+                                    <h6 class="card-title text-center">View Profile</h6><br><br>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6"><label>Name:- </label><input type="text" class="form-control"
+                                            value="<%=values.fname%>" disabled></div>
+                                    <div class="col-md-6"><label>Surname:- </label><input type="text"
+                                            class="form-control" value="<%=values.lname%>" disabled></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12"><label>Email:- </label><input type="text"
+                                            class="form-control" value="<%=values.email%>" disabled></div>
+                                    <div class="col-md-12"><label>Phone Number:- </label><input type="text"
+                                            class="form-control" value="<%=values.phone%>" disabled></div>
+                                    <div class="col-md-12"><label>Country:- </label><input type="text"
+                                            class="form-control" value="<%=values.country%>" disabled></div>
+                                    <div class="col-md-12"><label>Gender:- </label><input type="text"
+                                            class="form-control" value="<%=values.gender%>" disabled></div>
+                                    <div class="col-md-12"><label>Hobbies:- </label><input type="text"
+                                            class="form-control" value="<%=values.hobbies%>" disabled></div>
+                                </div><br>
+                                <div class="mt-5 text-center"><input class="btn btn-primary" type="submit"
+                                        value="Edit Profile"></input></div><br>
+
+                                <div class="text-center">
+                                    <a href="/resetPassword"> Reset Password</a>
+                                </div><br>
+                                <div class="text-center"><a href="/dashboard"> <input class="btn btn-primary"
+                                            style="margin: 0% 2%;" id="edit" type="button" value="Back"></a></div>
+                                <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

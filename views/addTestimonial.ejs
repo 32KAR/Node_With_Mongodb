@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="card" style="padding: 4rem;">
+        <div class="card-body">
+            <h6 class="card-title text-center" style=" padding-bottom: 2rem;">Add Testimonial</h6>
+            <form action="/addTestimonial" method="post" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" name="testi_name" value="<%= values.testi_name %>"
+                        placeholder="Enter Testimonial Name">
+                    <% if (typeof error1 !=='undefined' && error1.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error1 %>
+                        </div>
+                        <% } %>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" name="designation" value="<%= values.designation %>"
+                        placeholder="Enter Designation">
+                    <% if (typeof error2 !=='undefined' && error2.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error2 %>
+                        </div>
+                        <% } %>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" maxlength="255" rows="4" cols="20" style="height: 100%!important;"
+                        name="testi_desc"><%= values.testi_desc %></textarea>
+                    <% if (typeof error3 !=='undefined' && error3.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error3 %>
+                        </div>
+                        <% } %>
+                </div>
+
+                <div class="form-group">
+                    <input type="file" class="form-control" name="img" placeholder="Select image"
+                        value="<%= values.img %>">
+                    <% if (typeof error4 !=='undefined' && error4.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error4 %>
+                        </div>
+                        <% } %>
+                </div><br>
+
+                <input type="submit" class="btn btn-outline-success btn-sm" value="Add">
+                <a href="/testimonial"> <input class="btn btn-primary" style="margin: 0% 2%;" id="edit" type="button"
+                        value="Cancel"></a>
+            </form>
+        </div>
+</body>
+
+</html>

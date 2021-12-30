@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="card" style="padding: 4rem;">
+        <div class="card-body">
+            <h6 class="card-title text-center" style=" padding-bottom: 2rem;">Add Portfolio</h6>
+            <form action="/addPortfolio" method="post" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <select class="form-control" name="proj_category">
+                        <option selected="" disabled="">Select Your Project</option>
+                        <% values.forEach(function(value){ %>
+                            <option value="<%= value._id %>">
+                                <%= value.categoryname %>
+                            </option>
+                            <% }); %>
+
+                    </select>
+                    <% if (typeof error1 !=='undefined' && error1.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error1 %>
+                        </div>
+                        <% } %>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="proj_name" value="<%= values.proj_name %>"
+                        placeholder="Enter Project Name">
+                    <% if (typeof error2 !=='undefined' && error2.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error2 %>
+                        </div>
+                        <% } %>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="proj_title" value="<%= values.proj_title %>"
+                        placeholder="Enter Title">
+                    <% if (typeof error3 !=='undefined' && error3.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error3 %>
+                        </div>
+                        <% } %>
+                </div>
+                <div class="form-group">
+                    <input type="file" class="form-control" name="proj_image" placeholder="Select image" multiple>
+                    <% if (typeof error6 !=='undefined' && error6.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error6 %>
+                        </div>
+                        <% } %>
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" name="proj_date" value="<%= values.proj_date %>"
+                        placeholder="Enter Date">
+
+                    <% if (typeof error4 !=='undefined' && error4.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error4 %>
+                        </div>
+                        <% } %>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" maxlength="255" rows="4" cols="20" style="height: 100%!important;"
+                        name="proj_desc"><%= values.proj_desc %></textarea>
+                    <% if (typeof error5 !=='undefined' && error5.length> 0) { %>
+                        <div style="color: red;">
+                            <%= error5 %>
+                        </div>
+                        <% } %>
+                </div>
+
+                <input type="submit" class="btn btn-outline-success btn-sm" value="Add">
+                <a href="/portfolio"> <input class="btn btn-primary" style="margin: 0% 2%;" id="edit" type="button"
+                        value="Cancel"></a>
+            </form>
+        </div>
+</body>
+
+</html>

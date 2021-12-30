@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="card" style="margin: 4rem; background-color: rgb(245, 239, 239);">
+        <div class="card-body">
+            <form action="/multiDeleteContactUs" method="get">
+                <h2 class="card-title text-center" style="padding-top: 1rem; padding-bottom: 5rem;">Contact Us</h2>
+                <div class="container-fluid">
+                    <div class="row text-center">
+                        <div class="col-sm-2">
+                            <a href="/showAddContactUs" class="btn btn-outline-primary">
+                                Add New Contact</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="submit" class="btn btn-outline-primary" value="Multi Delete"
+                                onclick="return confirm('Are you sure you want to Delete ?')">
+                        </div>
+                        <div class="col-sm-1">
+                            <b> Contact Name </b>
+                        </div>
+                        <div class="col-sm-2">
+                            <b> Email </b>
+                        </div>
+                        <div class="col-sm-2">
+                            <b> Contact Number </b>
+                        </div>
+                        <div class="col-sm-2">
+                            <b> Message </b>
+                        </div>
+                        <div class="col-sm-2">
+                            <b> Date </b>
+                        </div>
+                    </div><br>
+
+                    <% values.forEach((value,index)=> { %>
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <a href="/showEditContactUs/<%=value._id%>"> <input class="btn btn-primary"
+                                        style="margin: 0% 2%;" id="edit" type="button" value="Edit"></a>
+                            </div>
+                            <div class="col-sm-1 ">
+                                <a href="/deleteContactUs/<%=value._id%>" method="Delete"
+                                    onclick="return confirm('Are you sure you want to Delete ?')">
+                                    <input class="btn btn-primary" style="margin: 0% 2%;" id="edit" type="button"
+                                        value="Delete"></a>
+                            </div>
+                            <div class="col-sm-1 text-center">
+                                <label><input type="checkbox" id="multiSelect" name="<%= value._id%>"
+                                        value="multiSelect"></label>
+                            </div>
+                            <div class="col-sm-1 ">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="contact_name"
+                                        value="<%= value.contact_name %>" placeholder="Enter Name">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="contact_email"
+                                        value="<%= value.contact_email %>" placeholder="Enter Email">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="contact_no"
+                                        value="<%= value.contact_no %>" placeholder="Enter Contact Number">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <div class="form-group">
+                                    <textarea class="form-control" maxlength="255" rows="3" cols="20"
+                                        style="height: 100%!important;" name="msg"><%= value.msg %></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="date" value="<%= value.date %>"
+                                        placeholder="Enter Date">
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+
+                <div class="text-center">
+                    <a href="/dashboard"> <input class="btn btn-primary" style="margin: 0% 2%;" id="edit" type="button"
+                            value="Back"></a>
+                </div>
+                <br><br>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

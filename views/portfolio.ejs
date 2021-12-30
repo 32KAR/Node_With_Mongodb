@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="card" style="margin: 2rem; background-color: rgb(245, 239, 239);">
+        <div class="card-body">
+            <form action="/multiDeletePortfolio" method="get">
+                <h2 class="card-title text-center" style="padding-top: 1rem; padding-bottom: 5rem;">Portfolio</h2>
+                <div class="container-fluid">
+                    <div class="row text-center">
+                        <div class="col-sm-2">
+                            <a href="/showAddPortfolio" class="btn btn-outline-primary">
+                                Add New Portfolio</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="submit" class="btn btn-outline-primary" value="Multi Delete"
+                                onclick="return confirm('Are you sure you want to Delete ?')">
+                        </div>
+                        <div class="col-sm-2">
+                            <b> Project Category </b>
+                        </div>
+                        <div class="col-sm-1">
+                            <b> Project Name </b>
+                        </div>
+                        <div class="col-sm-2">
+                            <b> Project Image </b>
+                        </div>
+                        <div class="col-sm-1">
+                            <b> Project Title </b>
+                        </div>
+                        <div class="col-sm-2">
+                            <b> Project Date </b>
+                        </div>
+                        <div class="col-sm-1">
+                            <b> Project Description </b>
+                        </div>
+                    </div><br>
+
+                    <% values.forEach((value,index)=> { %>
+                        <div class="row">
+
+                            <div class="col-sm-1 text-center">
+                                <a href="/showEditPortfolio/<%=value._id%>"> <input class="btn btn-primary"
+                                        style="margin: 0% 2%;" id="edit" type="button" value="Edit"></a>
+                            </div>
+
+                            <div class="col-sm-1 ">
+                                <a href="/deletePortfolio/<%=value._id%>" method="Delete"
+                                    onclick="return confirm('Are you sure you want to Delete ?')"> <input
+                                        class="btn btn-primary" style="margin: 0% 2%;" id="edit" type="button"
+                                        value="Delete"></a>
+                            </div>
+                            <div class="col-sm-1 text-center">
+                                <label><input type="checkbox" id="multiSelect" name="<%= value._id%>"
+                                        value="multiSelect"></label>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <div class="form-group">
+                                    <% value.output.forEach((v)=> { %>
+                                        <% if(v._id.equals(value.proj_category)){ %>
+                                            <input type="text" value="<%= v.categoryname %>" disabled>
+                                            <% } %>
+                                                <% }); %>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-1 ">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="proj_name"
+                                        value="<%= value.proj_name %>" placeholder="Enter Project Name" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <div class="form-group">
+                                    <% value.proj_image.forEach((v,index)=> { %>
+                                        <img src="/<%= v %>" alt="Project Image" style="height: 8rem;" width="50px">
+                                        <% }); %>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 ">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="proj_title"
+                                        value="<%= value.proj_title %>" placeholder="Enter Title" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" name="proj_date"
+                                        value="<%= value.proj_date %>" placeholder="Enter Date" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 ">
+                                <div class="form-group">
+                                    <textarea class="form-control" maxlength="255" rows="4" cols="20"
+                                        style="height: 100%!important;" name="proj_desc"
+                                        disabled><%= value.proj_desc %></textarea>
+                                </div>
+                            </div>
+                        </div><br><br>
+                        <% }); %>
+                            <br>
+                            <div class="text-center"><a href="/dashboard"> <input class="btn btn-primary"
+                                        style="margin: 0% 2%;" id="edit" type="button" value="Back"></a></div>
+                            <br><br>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
